@@ -1,0 +1,169 @@
+/* ── Page wrapper ──────────────────────────────────────────────────────────── */
+.reviews-page {
+  min-height: 100vh;
+  background-color: #0d0d0d;
+}
+
+/* ── Loading state ─────────────────────────────────────────────────────────── */
+.reviews-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  color: #aaa;
+  gap: 16px;
+}
+
+/* ── Back button ───────────────────────────────────────────────────────────── */
+.reviews-back-btn {
+  color: #aaa;
+  text-decoration: none;
+  padding: 0;
+  font-size: 14px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.reviews-back-btn:hover {
+  color: gold;
+}
+
+/* ── Movie mini header (poster + title + rating) ───────────────────────────── */
+.reviews-movie-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  background-color: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 8px;
+}
+
+.reviews-poster {
+  width: 70px;
+  height: 105px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #444;
+  flex-shrink: 0;
+}
+
+.reviews-movie-title {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.reviews-movie-date {
+  color: #888;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.reviews-avg {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.reviews-avg-score {
+  color: gold;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.reviews-avg-label {
+  color: #999;
+  font-size: 13px;
+}
+
+.reviews-no-rating {
+  color: #888;
+  font-size: 13px;
+  font-style: italic;
+  margin: 0;
+}
+
+/* ── Empty state ───────────────────────────────────────────────────────────── */
+.reviews-empty {
+  background-color: #1a1a1a;
+  border: 1px dashed #333;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  color: #888;
+  font-size: 14px;
+}
+
+/* ── Individual review card ────────────────────────────────────────────────── */
+.review-card {
+  background-color: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  transition: border-color 0.2s;
+}
+
+.review-card:hover {
+  border-color: #444;
+}
+
+/* Header row: author + stars on left, date on right */
+.review-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.review-card-author-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.review-card-author {
+  color: gold;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.review-card-stars {
+  display: flex;
+  align-items: center;
+}
+
+.review-card-date {
+  color: #666;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* Review text */
+.review-card-body {
+  color: #ccc;
+  font-size: 14px;
+  line-height: 1.65;
+  margin-bottom: 0;
+  white-space: pre-wrap; /* Preserves intentional line breaks in review text */
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────────── */
+@media (max-width: 576px) {
+  .reviews-movie-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .reviews-avg {
+    justify-content: center;
+  }
+}

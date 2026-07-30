@@ -1,71 +1,170 @@
-.movie-carousel-container{
-    width: 100vw;
-    background-color: black;
-}
-.movie-poster{
-    height: 300px;
-    border: 1px solid gold;
-    border-radius: 10px;
-    overflow: hidden;
-}
-.movie-poster > img{
-    height: 100%;
-    width: 100%;
-
-}
-.movie-card-container{
-    height: 550px;
-    background-color: black;
-}
-.movie-card{
-    background-repeat: no-repeat;
-    width:100%;
-    height: 100%;
-    background-size: cover;
-    background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1)), var(--img);
-}
-.movie-detail{
-    position: absolute;
-    top:200px;
-    display: flex;
-    justify-content: space-evenly;
-    width:100%;
-}
-.movie-title{
-    color:white;
-    display: flex;
-    align-items: center;
+/* ── Carousel container ───────────────────────────────────────────────────── */
+.movie-carousel-container {
+  width: 100vw;
+  background-color: black;
 }
 
-.movie-buttons-container{
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    width:300px;
+/* ── Movie card ───────────────────────────────────────────────────────────── */
+.movie-card-container {
+  height: 550px;
+  background-color: black;
 }
 
-.play-button-icon-container{
-    padding:0px;
-    margin:0px;
-    width:150px;
-}
-.play-button-icon{
-    padding:0px;
-    margin:0px;
-    color:gold;
-    font-size: 3rem;
-    transition: 0.3s;
-    cursor: pointer;
-}
-.play-button-icon:hover{
-    font-size: 4rem;
-    color:white;
+.movie-card {
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  /* Backdrop image with dark gradient fade-to-bottom */
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.95)), var(--img);
 }
 
+/* ── Movie detail overlay ─────────────────────────────────────────────────── */
+.movie-detail {
+  position: absolute;
+  top: 200px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  width: 100%;
+  padding: 0 20px;
+}
+
+/* ── Poster ───────────────────────────────────────────────────────────────── */
+.movie-poster {
+  height: 300px;
+  border: 2px solid gold;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.movie-poster > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* ── Movie info (title + rating + genres) ─────────────────────────────────── */
+.movie-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 300px;
+}
+
+.movie-title {
+  color: white;
+}
+
+.movie-title h4 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-shadow: 1px 1px 4px black;
+}
+
+/* Star rating display */
+.movie-rating {
+  color: gold;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.movie-rating .rating-label {
+  color: #aaa;
+  font-size: 0.85rem;
+}
+
+/* Genre chips */
+.movie-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.genre-badge {
+  background-color: rgba(255, 215, 0, 0.2);
+  color: gold;
+  border: 1px solid rgba(255, 215, 0, 0.5);
+  border-radius: 12px;
+  padding: 2px 10px;
+  font-size: 11px;
+}
+
+/* ── Buttons row ──────────────────────────────────────────────────────────── */
+.movie-buttons-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Play icon */
+.play-button-icon {
+  color: gold;
+  font-size: 3rem;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.play-button-icon:hover {
+  font-size: 3.5rem;
+  color: white;
+}
+
+/* Watchlist heart button */
+.watchlist-btn {
+  background: none;
+  border: 2px solid #555;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #aaa;
+  transition: all 0.2s;
+}
+
+.watchlist-btn:hover {
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+
+.watchlist-btn.in-list {
+  background-color: rgba(231, 76, 60, 0.15);
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
 @media only screen and (max-width: 800px) {
-    .movie-detail{
-        flex-direction: column;
-        align-items: center;
-        top:20px;
-    }
+  .movie-detail {
+    flex-direction: column;
+    align-items: center;
+    top: 20px;
+    gap: 10px;
+  }
+
+  .movie-info {
+    align-items: center;
+    text-align: center;
+    max-width: 90%;
+  }
+
+  .movie-poster {
+    height: 180px;
+    width: 120px;
+  }
+
+  .movie-buttons-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
