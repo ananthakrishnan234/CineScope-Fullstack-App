@@ -19,7 +19,7 @@
 
 ## 📌 About
 
-CineScope lets users browse movies, view details, rate and review titles, and maintain a personal watchlist. It's built as a showcase of production-quality Spring Boot backend engineering paired with a modern React 19 frontend — the kind of thing that's easy to demo in an interview and easy to read in a code review.
+CineScope let's users browse movies, view details, rate and review titles, and maintain a personal watchlist. It's built as a showcase of production-quality Spring Boot backend engineering paired with a modern React 19 frontend — the kind of thing that's easy to demo in an interview and easy to read in a code review.
 
 ### What makes this more than a typical CRUD demo
 - **JWT authentication with refresh tokens**, backed by Spring Security
