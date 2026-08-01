@@ -1,129 +1,173 @@
+<div align="center">
 
+# 🎬 CineScope — Full-Stack Movie Review Platform
 
-# Movies App (Spring Boot + React)  
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/spring_boot_3.5-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
+![React](https://img.shields.io/badge/react_19-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![MongoDB](https://img.shields.io/badge/MongoDB_Atlas-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
+![License](https://img.shields.io/badge/license-MIT-lightgrey?style=for-the-badge)
 
-React JavaScript Spring-Boot REST-API Bootstrap MongoDB License  
+**A production-grade, full-stack movie review platform with secure auth, watchlists, and paginated reviews — built to demonstrate real REST API design, not just CRUD.**
 
-A full-stack Movies App built with React (frontend) and Spring Boot (backend).  
-It allows users to browse movies, watch trailers, and add reviews.  
-Perfect for showcasing full-stack development, REST API integration, and responsive UI design.  
+[🌐 Live Demo](https://cine-scope-fullstack-app.vercel.app/) · [📖 API Docs (Swagger)](#) · [🐛 Report Bug](https://github.com/ananthakrishnan234/CineScope-Fullstack-App/issues)
 
----
-
-## Features
-- **Browse Movies** – Display a carousel of trending movies.  
-- **Movie Details** – View detailed info like title, poster, and storyline.  
-- **Watch Trailers** – Embedded trailer player for each movie.  
-- **Submit Reviews** – Add and manage movie reviews stored in MongoDB.  
-- **Responsive Design** – Styled with Bootstrap for mobile-friendly UI.  
-- **Full-Stack Integration** – Seamless linkage between React frontend and Spring Boot backend.  
+</div>
 
 ---
 
-## Project Structure
+## 📌 About
+
+CineScope lets users browse movies, view details, rate and review titles, and maintain a personal watchlist. It's built as a showcase of production-quality Spring Boot backend engineering paired with a modern React 19 frontend — the kind of thing that's easy to demo in an interview and easy to read in a code review.
+
+### What makes this more than a typical CRUD demo
+- **JWT authentication with refresh tokens**, backed by Spring Security
+- **Global exception handling** — consistent, structured error responses across every endpoint
+- **DTO layer** — API contracts are decoupled from MongoDB documents, no leaking internal models
+- **Paginated, sortable reviews** with optimized MongoDB aggregation pipelines
+- **Swagger / OpenAPI docs** — every endpoint is documented and testable from the browser
+- **Clean package structure** — controller / service / repository / dto / model / config / exception, no god classes
+
+---
+
+## ✨ Features
+
+| Category | Details |
+|---|---|
+| 🔐 **Auth** | JWT-based login/register with refresh token rotation, Spring Security filter chain |
+| 🎥 **Movies** | Browse, search, and view detailed movie info (poster, storyline, cast) |
+| ⭐ **Reviews** | Submit star ratings + written reviews, paginated per movie |
+| 📌 **Watchlist** | Add/remove movies to a personal watchlist per user |
+| 📖 **API Docs** | Interactive Swagger UI for every endpoint |
+| ⚠️ **Error Handling** | Centralized `@ControllerAdvice` returns consistent JSON error shapes |
+| 📱 **Responsive UI** | Bootstrap-based layout, works cleanly on mobile |
+
+---
+
+## 🛠️ Tech Stack
+
+**Backend:** Java 17 · Spring Boot 3.5 · Spring Security · Spring Data MongoDB · JWT · Maven · Swagger/OpenAPI
+**Frontend:** React 19 · Axios · React Router · Bootstrap 5
+**Database:** MongoDB Atlas
+**Deployment:** Vercel (frontend) · Render (backend)
+
+---
+
+## 📁 Project Structure
+
 ```
-Fullstack-Movies-App/
+CineScope-Fullstack-App/
 │
-├── movie-backend/            # Spring Boot backend
-│   ├── src/main/java/...     # REST API controllers, services, models
-│   ├── pom.xml               # Maven dependencies
-│   └── application.properties# DB + server config
+├── Movies-Backend/                     # Spring Boot backend
+│   ├── src/main/java/com/cinescope/
+│   │   ├── controller/                 # REST controllers
+│   │   ├── service/                    # Business logic
+│   │   ├── repository/                 # MongoDB repositories
+│   │   ├── dto/                        # Request/response DTOs
+│   │   ├── model/                      # MongoDB document models
+│   │   ├── config/                     # Security & JWT config
+│   │   └── exception/                  # Global exception handling
+│   ├── src/main/resources/
+│   │   └── application.properties
+│   └── pom.xml
 │
-├── movie-frontend/           # React frontend
+├── Movies-Frontend/                    # React frontend
 │   ├── src/
-│   │   ├── components/       # Reusable React components
-│   │   ├── pages/            # Page-level views (Home, Trailer, Reviews)
-│   │   ├── App.js            # Main app
-│   │   └── index.js          # ReactDOM render
-│   ├── package.json          # Frontend dependencies
-│   └── public/               # Static assets
+│   │   ├── components/                 # Reusable UI components
+│   │   ├── pages/                      # Route-level views
+│   │   ├── services/                   # Axios API layer
+│   │   └── App.js
+│   └── package.json
 │
-├── movies.json               # Sample dataset (movies, trailers, reviews)
-├── README.md
-└── .gitignore
+├── Movies.json                         # Sample dataset
+├── LICENSE
+└── README.md
 ```
 
 ---
 
-## Setup Instructions
+## 🚀 Getting Started
 
-### 1 Clone the Repository
+### 1. Clone the repository
 ```bash
-git clone https://github.com/ananthakrishnan234/Fullstack-Movies-App.git
-cd Fullstack-Movies-App
+git clone https://github.com/ananthakrishnan234/CineScope-Fullstack-App.git
+cd CineScope-Fullstack-App
 ```
 
----
+### 2. Backend setup (Spring Boot + MongoDB Atlas)
 
-### 2 Backend Setup (Spring Boot + MongoDB Atlas)
-
-#### Configure MongoDB Atlas
-1. Create a **MongoDB Atlas cluster**.  
-2. Add your credentials in `application.properties`:  
-
+Create a `.env` or set the following in `application.properties`:
 ```properties
-spring.data.mongodb.database=moviesdb
-spring.data.mongodb.uri=mongodb+srv://<USERNAME>:<PASSWORD>@<CLUSTER>/?
-retryWrites=true&w=majority
+spring.data.mongodb.uri=mongodb+srv://<USERNAME>:<PASSWORD>@<CLUSTER>/?retryWrites=true&w=majority
+spring.data.mongodb.database=cinescopedb
+jwt.secret=<YOUR_JWT_SECRET>
+jwt.expiration=3600000
 ```
 
-*(Replace `<USERNAME>`, `<PASSWORD>`, and `<CLUSTER>` with your own details.)*  
+> ⚠️ Never commit real credentials. Use environment variables in production.
 
-#### Import Initial Dataset
-Use the sample dataset to preload movies and reviews into MongoDB:  
+Run the backend:
 ```bash
-mongoimport --uri "mongodb+srv://<USERNAME>:<PASSWORD>@<CLUSTER>/moviesdb" \
-  --collection movies --file movies.json --jsonArray
-```
-
-#### Run Backend
-```bash
-cd movie-backend
+cd Movies-Backend
 mvn spring-boot:run
 ```
+Backend runs at `http://localhost:8080`
+Swagger UI available at `http://localhost:8080/swagger-ui/index.html`
 
-The backend will run at **http://localhost:8080/**  
-
----
-
-### 3 Frontend Setup (React)
-
+### 3. Frontend setup (React)
 ```bash
-cd movie-frontend
+cd Movies-Frontend
 npm install
 npm start
 ```
+Frontend runs at `http://localhost:3000`
 
-The frontend will run on **http://localhost:3000/**  
-
----
-
-## Example User Flow
-1. Open the app → See a list of trending movies.  
-2. Click a movie → View details, storyline, and poster.  
-3. Watch trailer → Embedded player opens in a new page.  
-4. Submit review → Add feedback stored in MongoDB and instantly visible.  
+### 4. (Optional) Seed sample data
+```bash
+mongoimport --uri "<YOUR_MONGO_URI>" --collection movies --file Movies.json --jsonArray
+```
 
 ---
 
-## Technologies Used
-- React 18  
-- JavaScript (ES6+)  
-- Bootstrap 5  
-- Axios (for API calls)  
-- React Router DOM  
-- Spring Boot 3  
-- MongoDB Atlas  
+## 🔑 Sample API Usage
+
+```http
+POST /api/auth/login
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "yourpassword"
+}
+```
+
+Response includes a JWT to authenticate subsequent requests via the `Authorization: Bearer <token>` header. Full endpoint reference is in the Swagger UI.
 
 ---
 
-## License
-This project is licensed under the MIT License – see the LICENSE file for details.  
+## 🗺️ Roadmap
+
+- [ ] Admin panel for moderating reviews
+- [ ] Recommendation engine based on watch history
+- [ ] Dockerized deployment
+- [ ] CI pipeline with GitHub Actions
 
 ---
 
-## Contact
-**Ananthakrishnan Sudhakaran**  
- Email: [ananthakrishnans234@gmail.com](mailto:ananthakrishnans234@gmail.com)  
- GitHub: [ananthakrishnan234](https://github.com/ananthakrishnan234)  
- LinkedIn: [Ananthakrishnan Sudhakaran](https://www.linkedin.com/in/ananthakrishnan-sudhakaran)  
+## 📄 License
+
+Licensed under the MIT License — see [LICENSE](./LICENSE) for details.
+
+---
+
+## 📬 Contact
+
+**Ananthakrishnan Sudhakaran**
+📧 [ananthakrishnans234@gmail.com](mailto:ananthakrishnans234@gmail.com) · 💼 [LinkedIn](https://www.linkedin.com/in/ananthakrishnan234/) · 🐙 [GitHub](https://github.com/ananthakrishnan234)
+
+<div align="center">
+
+⭐ If this project helped you, consider giving it a star!
+
+</div>
